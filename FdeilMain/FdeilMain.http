@@ -1,0 +1,6 @@
+@FdeilMain_HostAddress = http://localhost:5136
+
+GET {{FdeilMain_HostAddress}}
+Accept: application/json
+
+###
