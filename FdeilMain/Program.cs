@@ -1,5 +1,3 @@
-using Microsoft.AspNetCore.Mvc;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -14,7 +12,7 @@ app.UseHttpsRedirection();
 app.MapGet("/", context =>
 {
     var isSpanish = context.Request.Headers["Accept-Language"].ToString().StartsWith("es", StringComparison.OrdinalIgnoreCase);
-    var host = context.Request.Host.Host;
+    var host = context.Request.Host.Host.Replace("www.",string.Empty).ToLower();
 
     var redirectTo = $"https://blog{(isSpanish ? "-es" : string.Empty)}.{host}";
     context.Response.Redirect(redirectTo);    
